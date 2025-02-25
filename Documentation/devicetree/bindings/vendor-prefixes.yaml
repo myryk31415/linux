@@ -1653,6 +1653,8 @@ patternProperties:
     description: WinLink Co., Ltd
   "^winstar,.*":
     description: Winstar Display Corp.
+  "^wiko,.*":
+    description: Wiko SAS
   "^wirelesstag,.*":
     description: Wireless Tag (qiming yunduan)
   "^wits,.*":
