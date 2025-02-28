@@ -18,10 +18,22 @@
 	};
 
 	chosen {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
 		stdout-path = "serial0";
+
+		framebuffer@83200000 {
+			compatible = "simple-framebuffer";
+			reg = <0x0 0x83200000 0x0 (1280 * 720 * 3)>;
+			width = <720>;
+			height = <1280>;
+			stride = <(720 * 3)>;
+			format = "r8g8b8";
+		};
 	};
 
-	gpio-keys {
+	gpio_keys {
 		compatible = "gpio-keys";
 		pinctrl-0 = <&gpio_keys_default>;
 		pinctrl-names = "default";
@@ -31,6 +43,18 @@
 			label = "Volume up";
 			gpios = <&tlmm 107 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_VOLUMEUP>;
+		};
+	};
+
+
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		framebuffer-region@83200000 {
+			reg = <0x0 0x83200000 0x0 (1280 * 720 * 3)>;
+			no-map;
 		};
 	};
 
